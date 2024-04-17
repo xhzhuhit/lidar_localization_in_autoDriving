@@ -1,10 +1,4 @@
-/*
- * @Description: 
- * @Author: Ren Qian
- * @Date: 2019-03-31 13:10:51
- */
 #include "subscriber/gnss_subscriber.hpp"
-
 #include "glog/logging.h"
 
 namespace lidar_slam {

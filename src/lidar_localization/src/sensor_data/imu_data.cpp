@@ -1,10 +1,4 @@
-/*
- * @Description: imu data
- * @Author: Ren Qian
- * @Date: 2020-02-23 22:20:41
- */
 #include "sensor_data/imu_data.hpp"
-
 #include <cmath>
 #include "glog/logging.h"
 

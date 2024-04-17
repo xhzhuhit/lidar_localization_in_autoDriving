@@ -7,10 +7,17 @@ add_compile_options(-std=c++11)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
+find_package(PCL 1.1 REQUIRED)
+include_directories(${PCL_INCLUDE_DIRS})
+link_directories(${PCL_LIBRARY_DIRS})
+add_definitions(${PCL_DEFINITIONS})
+
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  pcl_conversions
+  pcl_ros 
 )
 
 ## System dependencies are found with CMake's conventions
@@ -155,5 +162,6 @@ include(cmake/geographic.cmake)
 
 MESSAGE(STATUS "project_source_dir-------kk----:  " ${PROJECT_SOURCE_DIR})
 add_executable(front_end_node src/subscriber/gnss_subscriber.cpp
+  src/subscriber/cloud_subscriber.cpp
   src/apps/front_end_node.cpp)
-target_link_libraries(front_end_node ${catkin_LIBRARIES})
+target_link_libraries(front_end_node ${catkin_LIBRARIES} ${PCL_LIBRARY_DIRS}) 

@@ -1,11 +1,4 @@
-/*
- * @Description: 订阅激光点云信息，并解析数据
- * @Author: Ren Qian
- * @Date: 2020-02-05 02:27:30
- */
-
 #include "subscriber/cloud_subscriber.hpp"
-
 #include "glog/logging.h"
 
 namespace lidar_slam {
@@ -19,6 +12,7 @@ void CloudSubscriber::msg_callback(const sensor_msgs::PointCloud2::ConstPtr& clo
     CloudData cloud_data;
     cloud_data.time = cloud_msg_ptr->header.stamp.toSec();
     pcl::fromROSMsg(*cloud_msg_ptr, *(cloud_data.cloud_ptr));
+    //std::cout << "cloud time: " << cloud_data.time << std::endl;
 
     new_cloud_data_.push_back(cloud_data);
     buff_mutex_.unlock();

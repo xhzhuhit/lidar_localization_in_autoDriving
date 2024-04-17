@@ -11,7 +11,7 @@
 #include <pcl/point_cloud.h>
 #include <pcl_conversions/pcl_conversions.h>
 
-#include "lidar_localization/sensor_data/cloud_data.hpp"
+#include "sensor_data/cloud_data.hpp"
 
 namespace lidar_slam {
 class CloudSubscriber {
