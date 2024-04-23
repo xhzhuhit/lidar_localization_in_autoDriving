@@ -10,6 +10,7 @@
 #include <pcl/point_types.h>
 #include <pcl/point_cloud.h>
 #include <pcl_conversions/pcl_conversions.h>
+#include <pcl/filters/approximate_voxel_grid.h>
 
 #include "sensor_data/cloud_data.hpp"
 
@@ -29,6 +30,8 @@ class CloudSubscriber {
     std::deque<CloudData> new_cloud_data_;
 
     std::mutex buff_mutex_;
+
+    pcl::ApproximateVoxelGrid<pcl::PointXYZ> approximate_voxel_grid_;
 };
 }
 
