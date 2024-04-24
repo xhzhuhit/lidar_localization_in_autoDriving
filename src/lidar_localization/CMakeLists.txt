@@ -159,9 +159,21 @@ include_directories(
 # )
 include(cmake/eigen.cmake)
 include(cmake/geographic.cmake)
+include(cmake/glog.cmake)
 
 MESSAGE(STATUS "project_source_dir-------kk----:  " ${PROJECT_SOURCE_DIR})
-add_executable(front_end_node src/subscriber/gnss_subscriber.cpp
-  src/subscriber/cloud_subscriber.cpp
-  src/apps/front_end_node.cpp)
-target_link_libraries(front_end_node ${catkin_LIBRARIES} ${PCL_LIBRARY_DIRS}) 
+add_executable(front_end_node src/apps/front_end_node.cpp
+  src/sensor_data/gnss_data.cpp
+  src/subscriber/gnss_subscriber.cpp
+  src/subscriber/cloud_subscriber.cpp)
+target_link_libraries(front_end_node ${catkin_LIBRARIES} ${PCL_LIBRARY_DIRS} ${ALL_TARGET_LIBRARIES}) 
+
+add_executable(sensor_fusion_node src/apps/sensor_fusion_node.cpp
+  src/sensor_data/gnss_data.cpp
+  src/sensor_data/velocity_data.cpp
+  src/sensor_data/imu_data.cpp
+  src/subscriber/gnss_subscriber.cpp
+  src/subscriber/velocity_subscriber.cpp
+  src/subscriber/imu_subscriber.cpp)
+
+target_link_libraries(sensor_fusion_node ${catkin_LIBRARIES} ${ALL_TARGET_LIBRARIES})

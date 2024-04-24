@@ -16,7 +16,7 @@ void GNSSSubscriber::msg_callback(const sensor_msgs::NavSatFixConstPtr& nav_sat_
     gnss_data.altitude = nav_sat_fix_ptr->altitude;
     gnss_data.status = nav_sat_fix_ptr->status.status;
     gnss_data.service = nav_sat_fix_ptr->status.service;
-    std::cout << "sub gnss_time: " << gnss_data.time << std::endl;
+    std::cout << "sub gnss_time: " << std::to_string(gnss_data.time) << std::endl;
 
     new_gnss_data_.push_back(gnss_data);
     buff_mutex_.unlock();

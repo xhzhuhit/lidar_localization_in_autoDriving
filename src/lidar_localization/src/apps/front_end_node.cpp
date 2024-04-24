@@ -75,6 +75,8 @@ int main(int argc, char** argv) {
 
         //在这里调用前端匹配，然后把pose发出去，和点云一起在rviz渲染
         //front_end_matching.match(gnss_data_buff, cloud_data_buff)
+
+        rate.sleep();
     }
     return 0;
 }
